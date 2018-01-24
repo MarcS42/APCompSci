@@ -31,8 +31,6 @@ public class StringInsertionSort {
         // TODO Auto-generated method stub
         StringInsertionSort strTest = new StringInsertionSort();
         String testStr = "BAXFWJ";
-        String num1 = "BCD";
-        String num2 = "BGF";
         System.out.print("Test String In: " + testStr + 
                 " Equals "  + strTest.sortLN(testStr));
 
