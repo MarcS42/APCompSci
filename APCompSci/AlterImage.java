@@ -75,4 +75,4 @@ public class AlterImage {
         }
     return imageOut;  
     }// end flipImage()
-}
+ }//End Class
