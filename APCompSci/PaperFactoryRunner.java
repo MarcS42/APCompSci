@@ -49,7 +49,7 @@ public class PaperFactoryRunner {
         }
         int usedRolls = myUsedRolls.size();
         System.out.println();
-        System.out.printf("Paper Meters Used: %10.2f"+"M" + "RollsUsed: %d"+"rolls",factory1.getPaperUsed(), usedRolls);
+        System.out.printf("Paper Meters Used: %10.2f"+"M " + "RollsUsed: %d"+"rolls",factory1.getPaperUsed(), usedRolls);
         
 
     }
