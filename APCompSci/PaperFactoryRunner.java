@@ -47,8 +47,9 @@ public class PaperFactoryRunner {
                     .getMeters()); //%10.2f means 10spaces 
                             //with 2 digits after the decimal   
         }
+        int usedRolls = myUsedRolls.size();
         System.out.println();
-        System.out.printf("Paper Meters Used: %10.2f"+"M",factory1.getPaperUsed());
+        System.out.printf("Paper Meters Used: %10.2f"+"M" + "RollsUsed: %d"+"rolls",factory1.getPaperUsed(), usedRolls);
         
 
     }
