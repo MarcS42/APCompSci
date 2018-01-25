@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author MarcSherman
  *
  */
-public class PaperFactoryRunner {
+public class PrintingFactoryRunner {
 
     /**
      * @param args
@@ -16,9 +16,11 @@ public class PaperFactoryRunner {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         PrintingFactory factory1 = new PrintingFactory(20);
-//        for(Machine m:factory1.getMachines()) {
-//            m=new Machine(new PaperRoll());
-//        }
+
+        /**Now you have a factory with 20 machine slots, need to
+         * install the machines. Couldn't get for-each to work 
+         * Machines is a private regular array object in PrintingFactory
+         */
         for(int i=0; i < factory1.getMachines().length; i++) {
             factory1.getMachines()[i] = new Machine(new PaperRoll());
         }
@@ -49,9 +51,8 @@ public class PaperFactoryRunner {
         }
         int usedRolls = myUsedRolls.size();
         System.out.println();
-        System.out.printf("Paper Meters Used: %10.2f"+"M " + "RollsUsed: %d"+"rolls",factory1.getPaperUsed(), usedRolls);
-        
+        System.out.printf("Paper Meters Used: %10.2f"+"M " + 
+        "RollsUsed: %d"+" rolls",factory1.getPaperUsed(), usedRolls);
+    }//end main(String[] args)
 
-    }
-
-}
+}//End PrintingFactoryRunner
