@@ -13,9 +13,30 @@ public class PrintingFactory {
     //All machines available in the company
     private Machine[] machines;
     
+    /**
+     * @return the machines
+     */
+    public Machine[] getMachines() {
+        return machines;
+    }
+
     //Available full paper rolls (1000 meters each)
     private ArrayList<PaperRoll> newRolls = new ArrayList<PaperRoll>();
     
+    /**
+     * @return the newRolls
+     */
+    public ArrayList<PaperRoll> getNewRolls() {
+        return newRolls;
+    }
+
+    /**
+     * @return the usedRolls
+     */
+    public ArrayList<PaperRoll> getUsedRolls() {
+        return usedRolls;
+    }
+
     //The used roll remnants (less than 4.0 meters each)
     private ArrayList<PaperRoll> usedRolls = new ArrayList<PaperRoll>();
     
@@ -55,10 +76,10 @@ public class PrintingFactory {
     public double getPaperUsed() {
         double sumMachines =0, sumUsed = 0;
         for(Machine m:machines) {
-            sumMachines += m.getPaperRoll().getMeters();
+            sumMachines += (1000-m.getPaperRoll().getMeters());
         }
         for(PaperRoll u:usedRolls) {
-            sumUsed += u.getMeters();
+            sumUsed += 1000-u.getMeters();
         }
     return sumUsed +sumMachines;    
     }
