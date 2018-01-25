@@ -38,7 +38,8 @@ public class PrintingFactory {
 //            }
 //        }
         for(Machine m : machines) {
-            if(m.getPaperRoll().getMeters()<4.0 && !newRolls.isEmpty()) {
+            if(m.getPaperRoll().getMeters()<4.0 && 
+                    !newRolls.isEmpty()) {
                 usedRolls.add(m.replacePaper(newRolls.remove(
                         newRolls.size()-1)));
             }
