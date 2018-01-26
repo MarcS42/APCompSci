@@ -19,10 +19,12 @@ public class PrintingFactoryRunner {
 
         /**Now you have a factory with 20 machine slots, need to
          * install the machines. Couldn't get for-each to work 
-         * Machines is a private regular array object in PrintingFactory
+         * Machines is a private Regular array object in 
+         * PrintingFactory
          */
         for(int i=0; i < factory1.getMachines().length; i++) {
-            factory1.getMachines()[i] = new Machine(new PaperRoll());
+            factory1.getMachines()[i] = 
+                    new Machine(new PaperRoll());
         }
         
         /**
@@ -32,7 +34,7 @@ public class PrintingFactoryRunner {
          */
         ArrayList<PaperRoll> myNewRolls = factory1.getNewRolls();
         ArrayList<PaperRoll> myUsedRolls = factory1.getUsedRolls();
-        for(int i=0; i < 25; i++) {
+        for(int i=0; i < 25; i++) {//adds 25 newPaperRolls to AL
             myNewRolls.add(new PaperRoll());
         }
         for(Machine m : factory1.getMachines()) {
@@ -51,7 +53,7 @@ public class PrintingFactoryRunner {
         }
         int usedRolls = myUsedRolls.size();
         System.out.println();
-        System.out.printf("Paper Meters Used: %10.2f"+"M " + 
+        System.out.printf("Paper Meters Used: %8.1f"+"M " + 
         "RollsUsed: %d"+" rolls",factory1.getPaperUsed(), usedRolls);
     }//end main(String[] args)
 
