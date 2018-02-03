@@ -48,7 +48,6 @@ public class Deck {
         }
         size = cards.size();
     }
-
     
     public boolean isEmpty() {
         return size <= 0;
@@ -65,6 +64,62 @@ public class Deck {
             return cards.get(size);
         }
         return null;
+    }
+    
+    public ArrayList<Card> perfectShuffle(Deck cards52){
+        
+        ArrayList<Card> shuffle = new 
+                ArrayList<Card>(cards52.getCards().size());
+        for(int i = 0; i < cards52.getCards().size(); i++) {
+            shuffle.add(null);
+        }
+        
+        int k = 0;
+        for(int j = 0; j < (cards52.getCards().size()+1)/2; j++) {
+            shuffle.set(k,cards52.getCards().get(j));
+            k +=2;
+        }
+        k = 1;
+        for(int j = (cards52.getCards().size()+1)/2; //in case cards52 has odd number of cards
+                j < cards52.getCards().size(); j++) {
+            shuffle.set(k,cards52.getCards().get(j));
+            k +=2;
+        }
+        return shuffle;
+    }
+    
+    /**
+     * @param cards un-shuffled deck
+     * @return shuffled - shuffled deck, but not real efficient
+     */
+    public ArrayList<Card> selectionShuffle(Deck cards){
+        ArrayList<Card> shuffled = new ArrayList<Card>();
+        for(int i = 0; i < cards.getCards().size(); i++) {
+            shuffled.add(null);
+        }
+        
+        for(int k = 0; k < cards.getCards().size(); k++) {
+            int j = (int)(Math.random()*cards.getCards().size());
+            while(cards.getCards().get(j) == null) {
+                j = (int)(Math.random()*cards.getCards().size());
+            }
+                shuffled.set(k, cards.getCards().get(j));
+                cards.getCards().set(j, null);
+        }
+    return shuffled;  
+    }
+    
+    public ArrayList<Card> effSelectionSort(Deck cards){
+        ArrayList<Card> shuffled = new ArrayList<Card>();
+        for(int k = cards.getCards().size()-1; k >= 0; k--) {
+            int r = (int)(Math.random()*(k + 1));
+            
+            Card temp = cards.getCards().get(k);
+            cards.getCards().set(k,cards.getCards().get(r));
+            cards.getCards().set(r, temp);
+        }
+        shuffled = cards.getCards();
+        return shuffled;
     }
     
     /**
