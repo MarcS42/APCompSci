@@ -26,7 +26,7 @@ public class DeckTester {
 //       System.out.println(testDeck0.dealCard());
 //       System.out.println(testDeck0.getSize());
        ArrayList<Card> shuffled = testDeck0.
-               effSelectionSort(testDeck0);
+               effSelectionShuffle(testDeck0);
        for(int i= 0; i < testDeck0.getCards().size(); i++) {
            System.out.println(testDeck0.getCards().get(i)+
                    "\t"+shuffled.get(i));
