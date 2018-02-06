@@ -47,9 +47,9 @@ public class Card {
      * (Not sure of the utility - 
      * in what card game would 2 cards match?)
      */
-    public static boolean match(Card c1, Card c2) {
-        if(c1.getRank()==c2.getRank()) {
-            if(c1.getSuit() == c2.getSuit()) {
+    public boolean match(Card that) {
+        if(this.getRank()==that.getRank()) {
+            if(this.getSuit() == that.getSuit()) {
                 return true;
             }
         }
