@@ -98,7 +98,7 @@ public abstract class Board {
 		return deck.getSize();
 	}
 
-	/**
+	/**Serves as getCards()[k]
 	 * Accesses a card on the board.
 	 * @return the card at position k on the board.
 	 * @param k is the board position of the card to return.
