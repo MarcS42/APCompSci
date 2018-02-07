@@ -50,6 +50,27 @@ public class Deck {
         size = cards.size();
     }
     
+    /** Deck 3 Param Constructor
+     * for when Suit, Rank, and pointValue are coming
+     *    from somewhere else
+     * @param rank String array of ranks
+     * @param suit String array of suits
+     * @param pVal int array of card point values
+     */
+    public Deck(String[] rank, String[] suit, int[] pVal) {
+        cards = new ArrayList<Card>();
+        for(int s = 0; s < suit.length; s++) {
+            for(int r= 0; r < rank.length; r++) {
+                cards.add(new Card(suit[s], rank[r], pVal[r]));
+            }
+        }
+        effSelectionShuffle(this);
+        size = cards.size();
+    }
+    
+    /**Determines if Deck is empty
+     * @return true if size <= 0
+     */
     public boolean isEmpty() {
         return size <= 0;
     }
