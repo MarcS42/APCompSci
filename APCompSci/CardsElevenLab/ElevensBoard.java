@@ -55,7 +55,8 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
-	    if(selectedCards.size() > 1 && selectedCards.size() < 4) {
+	    if(selectedCards.size() > 1 && selectedCards.size() 
+	            < 4) {
 	        if(selectedCards.size() < 3) {
 	            return containsPairSum11(selectedCards);
 	        }
@@ -89,19 +90,24 @@ public class ElevensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              contain an 11-pair; false otherwise.
 	 */
-	private boolean containsPairSum11(List<Integer> selectedCards) {
+	/**To Do Return PairSum method to private
+	 * 
+	 * @param selectedCards
+	 * @return
+	 */
+	boolean containsPairSum11(List<Integer> selectedCards) {
 		if(selectedCards.size()==2) {
-		    if(POINT_VALUES[selectedCards.get(0)]  + 
-		            POINT_VALUES[selectedCards.get(1)] == 11) {
+		    if(cardAt(selectedCards.get(0)).getPointValue()  + 
+		      cardAt(selectedCards.get(1)).getPointValue() == 11) {
 		        return true;
 		    }else {
 		        return false;
 		    }
 		}
-	    for(int i1=0; i1 < (RANKS.length-3)/2; i1++) {
-		    for(int i2 = RANKS.length-3; i2 >=RANKS.length/2; i2--) {
-		        if(POINT_VALUES[selectedCards.get(i1)]  + 
-	                    POINT_VALUES[selectedCards.get(i2)] == 11) {
+	    for(int i1=0; i1 < selectedCards.size(); i1++) {
+		    for(int i2 = 0; i2 <selectedCards.size(); i2++) {
+		        if(cardAt(selectedCards.get(i1)).getPointValue()  + 
+		            cardAt(selectedCards.get(i2)).getPointValue() == 11) {
 	                return true;
 		        }
 		    }
@@ -117,25 +123,29 @@ public class ElevensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	private boolean containsJQK(List<Integer> selectedCards) {
-	    if(selectedCards.size()<3) {
+	boolean containsJQK(List<Integer> selectedCards) {
+	    if(selectedCards.size() < 3) {
 	        return false;
 	    }
-	    if(selectedCards.size()==3) {
-            if(POINT_VALUES[selectedCards.get(0)]  + 
-                  POINT_VALUES[selectedCards.get(1)
-                   + POINT_VALUES[selectedCards.get(3)]] == 0) {
-                return true;
-            }else {
-                return false;
-            }
-        }
 	    int j = 0, q = 0, k = 0;
-	    for(Integer s : selectedCards) {
-	        if(RANKS[s] == "jack") j=1;
-	        if(RANKS[s] == "queen") q=1;
-	        if(RANKS[s] == "king") k=1;
+	    if(selectedCards.size() > 3) {
+	        for(Integer s : selectedCards) {
+	            if(cardAt(selectedCards.get(s)).getRank() == 
+	                "jack") j=1;
+	            if(cardAt(selectedCards.get(s)).getRank() == 
+	                "queen") q=1;
+	            if(cardAt(selectedCards.get(s)).getRank() == 
+	                "king") k=1;
+	        }
 	    }
+	        for(int i = 0; i < 3; i++) {
+	        if(cardAt(selectedCards.get(i)).getRank() == 
+                    "jack") j=1;
+            if(cardAt(selectedCards.get(i)).getRank() == 
+                    "queen") q=1;
+            if(cardAt(selectedCards.get(i)).getRank() == 
+                    "king") k=1;
+	        }
 	    if((j + q + k)>=3) {
 	        return true;
 	    }
