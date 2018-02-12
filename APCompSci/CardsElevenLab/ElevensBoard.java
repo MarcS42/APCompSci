@@ -1,6 +1,5 @@
 package CardsElevenLab;
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * The ElevensBoard class represents the board in 
@@ -34,7 +33,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * Flag used to control debugging print statements.
 	 */
-	private static final boolean I_AM_DEBUGGING = false;
+//	private static final boolean I_AM_DEBUGGING = false;
 
 
 	/**
@@ -95,8 +94,11 @@ public class ElevensBoard extends Board {
 	 * @param selectedCards
 	 * @return
 	 */
-	boolean containsPairSum11(List<Integer> selectedCards) {
-		if(selectedCards.size()==2) {
+	private boolean containsPairSum11(List<Integer> selectedCards) {
+		if(selectedCards.size()==3) {
+		    return false;
+		}
+	    if(selectedCards.size()==2) {
 		    if(cardAt(selectedCards.get(0)).getPointValue()  + 
 		      cardAt(selectedCards.get(1)).getPointValue() == 11) {
 		        return true;
@@ -123,7 +125,7 @@ public class ElevensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	boolean containsJQK(List<Integer> selectedCards) {
+	private boolean containsJQK(List<Integer> selectedCards) {
 	    if(selectedCards.size() < 3) {
 	        return false;
 	    }

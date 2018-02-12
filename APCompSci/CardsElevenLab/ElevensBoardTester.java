@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class ElevensBoardTester {
 
+    /**To run ElevensBoardTester, need to change helper methods in
+     *     ElevensBoard.java to package visibility by removing 
+     *     'private' access keywords.
+     * @param args
+     */
     public static void main(String[] args) {
         int count =0;
         for(int runs =0; runs < 10000; runs++) {

@@ -107,7 +107,7 @@ public abstract class Board {
 		return cards[k];
 	}
 
-	/**
+	/**  ++++++Notice 'enhanced for' 'k' is converted to Integer Object+++
 	 * Replaces selected cards on the board by dealing new cards.
 	 * @param selectedCards is a list of the indices of the
 	 *        cards to be replaced.
