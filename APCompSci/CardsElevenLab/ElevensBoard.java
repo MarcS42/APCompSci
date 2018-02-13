@@ -124,6 +124,7 @@ public class ElevensBoard extends Board {
 	 *                      to find a JQK group.
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
+	 *private 
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 	    if(selectedCards.size() < 3) {

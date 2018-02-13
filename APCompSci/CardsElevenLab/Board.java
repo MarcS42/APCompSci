@@ -47,6 +47,11 @@ public abstract class Board {
 			System.out.println("----------");
 		}
 		dealMyCards();
+		if (I_AM_DEBUGGING) {
+		    for(Card card : cards)
+            System.out.println(card);
+            System.out.println("---+++----");
+        }
 	}
 
 	/**
@@ -56,6 +61,11 @@ public abstract class Board {
 	public void newGame() {
 		deck.effSelectionShuffle(deck);
 		dealMyCards();
+		if (I_AM_DEBUGGING) {
+            for(Card card : cards)
+            System.out.println(card);
+            System.out.println("---***----");
+        }
 	}
 
 	/**
@@ -185,8 +195,9 @@ public abstract class Board {
 
 	/**
 	 * Deal cards to this board to start the game.
+	 * Change back to private when done testing
 	 */
-	private void dealMyCards() {
+	 private void dealMyCards() {
 		for (int k = 0; k < cards.length; k++) {
 			cards[k] = deck.dealCard();
 		}

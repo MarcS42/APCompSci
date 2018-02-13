@@ -38,6 +38,9 @@ public class Deck {
     /**
      * Deck Constructor
      * (not sure why they thought it needed 3 array params)
+     * (okay need 3 array param constructor so that can still use Deck
+     * class to play other solitaire type games like 13 - has different 
+     * rules that affect point values)
      */
     public Deck() {
         cards = new ArrayList<Card>();
@@ -64,8 +67,8 @@ public class Deck {
                 cards.add(new Card(suit[s], rank[r], pVal[r]));
             }
         }
-        effSelectionShuffle(this);
         size = cards.size();
+        effSelectionShuffle(this);
     }
     
     /**Determines if Deck is empty
@@ -79,6 +82,11 @@ public class Deck {
      * @return Card at position size-1 or Null if Deck isEmpty
      * Size tells you what card to deal and 
      * how many cards are left in the deck
+     * 
+     * When you play consecutive games, need to reset size in 
+     * shuffle method used so that each game has same number of
+     *  cards at start. newGame() in Board class starts by 
+     *  shuffling deck, so that is where 'size' gets reset.
      */
     public Card dealCard() {
         if (!isEmpty()) {
@@ -107,22 +115,22 @@ public class Deck {
      * @return shuffle - shuffled 52 card deck
      */
     public ArrayList<Card> perfectShuffle(Deck cards52){
-        
+        size =SUITS.length*RANKS.length;
         //initialize AL<Card> to null
         ArrayList<Card> shuffle = new 
-                ArrayList<Card>(cards52.getCards().size());
-        for(int i = 0; i < cards52.getCards().size(); i++) {
+                ArrayList<Card>(size);
+        for(int i = 0; i < size; i++) {
             shuffle.add(null);
         }
         
         int k = 0; //split deck in two halves, allowing for deck<52
-        for(int j = 0; j < (cards52.getCards().size()+1)/2; j++) {
+        for(int j = 0; j < (size+1)/2; j++) {
             shuffle.set(k,cards52.getCards().get(j));
             k +=2;
         }
         k = 1;
-        for(int j = (cards52.getCards().size()+1)/2; //in case cards52 has odd number of cards
-                j < cards52.getCards().size(); j++) {
+        for(int j = (size+1)/2; //in case cards52 has odd number of cards
+                j < size; j++) {
             shuffle.set(k,cards52.getCards().get(j));
             k +=2;
         }
@@ -135,15 +143,16 @@ public class Deck {
      * Accesses Math.random() too often
      */
     public ArrayList<Card> selectionShuffle(Deck cards){
+        size =SUITS.length*RANKS.length;
         ArrayList<Card> shuffled = new ArrayList<Card>();
-        for(int i = 0; i < cards.getCards().size(); i++) {
+        for(int i = 0; i < size; i++) {
             shuffled.add(null);
         }
         
-        for(int k = 0; k < cards.getCards().size(); k++) {
-            int j = (int)(Math.random()*cards.getCards().size());
+        for(int k = 0; k < size; k++) {
+            int j = (int)(Math.random()*size);
             while(cards.getCards().get(j) == null) {
-                j = (int)(Math.random()*cards.getCards().size());
+                j = (int)(Math.random()*size);
             }
                 shuffled.set(k, cards.getCards().get(j));
                 cards.getCards().set(j, null);
@@ -158,8 +167,9 @@ public class Deck {
      * @return Shuffled Deck cards
      */
     public ArrayList<Card> effSelectionShuffle(Deck cards){
+        size =SUITS.length*RANKS.length;
         ArrayList<Card> shuffled = new ArrayList<Card>();
-        for(int k = cards.getCards().size()-1; k >= 0; k--) {
+        for(int k = size-1; k >= 0; k--) {
             int r = (int)(Math.random()*(k + 1));
             
             //Swap sequence/snippet
