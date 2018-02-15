@@ -28,37 +28,37 @@ public class CardGameGUI extends JFrame implements ActionListener {
      * 
      */
     private static final long serialVersionUID = -8994434461252567644L;
-    /** Height of the game frame. */
-	private static final int DEFAULT_HEIGHT = 302;
-	/** Width of the game frame. */
-	private static final int DEFAULT_WIDTH = 800;
-	/** Width of a card. */
-	private static final int CARD_WIDTH = 73;
-	/** Height of a card. */
-	private static final int CARD_HEIGHT = 97;
-	/** Row (y coord) of the upper left corner of the first card. */
-	private static final int LAYOUT_TOP = 30;
-	/** Column (x coord) of the upper left corner of the first card. */
-	private static final int LAYOUT_LEFT = 30;
+    /** Height of the game frame. 302*/
+	private static final int DEFAULT_HEIGHT = 402;
+	/** Width of the game frame. 800*/
+	private static final int DEFAULT_WIDTH = 1064;
+	/** Width of a card. 73-97-*/
+	private static final int CARD_WIDTH = 129;
+	/** Height of a card. 97*/
+	private static final int CARD_HEIGHT = 172;
+	/** Row (y coord) of the upper left corner of the first card. 30*/
+	private static final int LAYOUT_TOP = 40;
+	/** Column (x coord) of the upper left corner of the first card. 30*/
+	private static final int LAYOUT_LEFT = 40;
 	/** Distance between the upper left x coords of
-	 *  two horizonally adjacent cards. */
-	private static final int LAYOUT_WIDTH_INC = 100;
+	 *  two horizonally adjacent cards. 100*/
+	private static final int LAYOUT_WIDTH_INC = 133;
 	/** Distance between the upper left y coords of
-	 *  two vertically adjacent cards. */
-	private static final int LAYOUT_HEIGHT_INC = 125;
-	/** y coord of the "Replace" button. */
-	private static final int BUTTON_TOP = 30;
-	/** x coord of the "Replace" button. */
-	private static final int BUTTON_LEFT = 570;
-	/** Distance between the tops of the "Replace" and "Restart" buttons. */
-	private static final int BUTTON_HEIGHT_INC = 50;
-	/** y coord of the "n undealt cards remain" label. */
-	private static final int LABEL_TOP = 160;
-	/** x coord of the "n undealt cards remain" label. */
-	private static final int LABEL_LEFT = 540;
+	 *  two vertically adjacent cards. 125*/
+	private static final int LAYOUT_HEIGHT_INC = 166;
+	/** y coord of the "Replace" button. 30*/
+	private static final int BUTTON_TOP = 40;
+	/** x coord of the "Replace" button. 570*/
+	private static final int BUTTON_LEFT = 758;
+	/** Distance between the tops of the "Replace" and "Restart" buttons. 50*/
+	private static final int BUTTON_HEIGHT_INC = 67;
+	/** y coord of the "n undealt cards remain" label. 160*/
+	private static final int LABEL_TOP = 213;
+	/** x coord of the "n undealt cards remain" label. 540*/
+	private static final int LABEL_LEFT = 718;
 	/** Distance between the tops of the "n undealt cards" and
-	 *  the "You lose/win" labels. */
-	private static final int LABEL_HEIGHT_INC = 35;
+	 *  the "You lose/win" labels. 35*/
+	private static final int LABEL_HEIGHT_INC = 47;
 
 	/** The board (Board subclass). */
 	private Board board;
