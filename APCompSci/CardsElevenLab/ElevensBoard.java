@@ -119,6 +119,10 @@ public class ElevensBoard extends Board {
 
 	/**
 	 * Check for a JQK in the selected cards.
+	 * 
+	 * Enhanced for loop doesn't work some times, so backed it up
+	 * with regular For loop so that one or both get through.
+	 * 
 	 * @param selectedCards selects a subset of this board. 
 	 *  It is a list of indexes into this board that are searched
 	 *                      to find a JQK group.
