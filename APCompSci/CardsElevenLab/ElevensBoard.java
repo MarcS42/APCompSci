@@ -133,21 +133,21 @@ public class ElevensBoard extends Board {
 	    int j = 0, q = 0, k = 0;
 	    if(selectedCards.size() > 3) {
 	        for(Integer s : selectedCards) {
-	            if(cardAt(selectedCards.get(s)).getRank() == 
-	                "jack") j=1;
-	            if(cardAt(selectedCards.get(s)).getRank() == 
-	                "queen") q=1;
-	            if(cardAt(selectedCards.get(s)).getRank() == 
-	                "king") k=1;
+	            if(cardAt(selectedCards.get(s)).getRank().
+	                    equals("jack")) j=1; 
+	            if(cardAt(selectedCards.get(s)).getRank().
+                        equals("queen")) q=1;
+	            if(cardAt(selectedCards.get(s)).getRank().
+                        equals("king")) k=1;
 	        }
 	    }
 	        for(int i = 0; i < 3; i++) {
-	        if(cardAt(selectedCards.get(i)).getRank() == 
-                    "jack") j=1;
-            if(cardAt(selectedCards.get(i)).getRank() == 
-                    "queen") q=1;
-            if(cardAt(selectedCards.get(i)).getRank() == 
-                    "king") k=1;
+	        if(cardAt(selectedCards.get(i)).getRank().
+                    equals("jack")) j=1;
+            if(cardAt(selectedCards.get(i)).getRank().
+                    equals("queen")) q=1;
+            if(cardAt(selectedCards.get(i)).getRank().
+                    equals("king")) k=1;
 	        }
 	    if((j + q + k)>=3) {
 	        return true;

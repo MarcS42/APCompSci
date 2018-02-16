@@ -130,7 +130,8 @@ public abstract class Board {
 
 	/**
 	 * Gets the indexes of the actual (non-null) cards on 
-	 *         the board.
+	 *         the entire board.
+	 *         Used to check if another play is possible
 	 *
 	 * @return a List that contains the locations (indexes)
 	 *         of the non-null entries on the board.
