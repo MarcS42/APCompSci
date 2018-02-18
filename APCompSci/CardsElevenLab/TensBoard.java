@@ -120,29 +120,10 @@ public class TensBoard extends Board {
         for (int i1 = 0; i1 < selectedCards.size(); i1++) {
             for (int i2 = 0; i2 < selectedCards.size(); i2++) {
                 
-                if (cardAt(selectedCards.get(i1)).getRank().equals("five")
-                 && cardAt(selectedCards.get(i2)).getRank().equals("five")) {
-                    if(cardAt(selectedCards.get(i1)).equals(cardAt(selectedCards.get(i2)))) {
-                        while(i2++ < selectedCards.size()) {
-                            i2++;
-                            if (cardAt(selectedCards.get(i1)).getPointValue()
-                                    + cardAt(selectedCards.get(i2)).getPointValue() == 10) {
-                                
-                                if(I_AM_DEBUGGING) {
-                                    System.out.println("cardAt(i1) " + cardAt(selectedCards.get(i1)));
-                                    System.out.println("cardAt(i2) " + cardAt(selectedCards.get(i2)));
-                                }
-                                
-                                return true;
-                            }
-                        }
-                    }
-                }
-                
                 if (cardAt(selectedCards.get(i1)).getPointValue()
                         + cardAt(selectedCards.get(i2)).getPointValue() == 10) {
                     if(cardAt(selectedCards.get(i1)).equals(cardAt(selectedCards.get(i2)))) {
-                        continue;
+                        continue;// most elegant solution!
                     }else {
                     
                     if(I_AM_DEBUGGING) {
