@@ -80,6 +80,7 @@ public class Deck {
     
     /**Deals a Card without removing it from the ArrayList
      * @return Card at position size-1 or Null if Deck isEmpty
+     * 
      * Size tells you what card to deal and 
      * how many cards are left in the deck
      * 
@@ -123,7 +124,7 @@ public class Deck {
             shuffle.add(null);
         }
         
-        int k = 0; //split deck in two halves, allowing for deck<52
+        int k = 0; //split deck in two halves,allowing for deck < 52
         for(int j = 0; j < (size+1)/2; j++) {
             shuffle.set(k,cards52.getCards().get(j));
             k +=2;
@@ -152,7 +153,8 @@ public class Deck {
         for(int k = 0; k < size; k++) {
             int j = (int)(Math.random()*size);
             while(cards.getCards().get(j) == null) {
-                j = (int)(Math.random()*size);
+                j = (int)(Math.random()*size);//picks another 
+                //card at random until !- null
             }
                 shuffled.set(k, cards.getCards().get(j));
                 cards.getCards().set(j, null);
@@ -184,6 +186,7 @@ public class Deck {
     /**
      * @override toString()
      */
+    @Override
     public String toString() {
         return cards.toString();
     }
