@@ -15,7 +15,7 @@ public class Deck {
         {"Ace", "2", "3", "4", "5", "6", "7", 
                 "8", "9", "10", "Jack", "Queen", "King"};
     private static final int POINT_VALUES[] = 
-        {1,2,3,4,5,6,7,8,9,10,10,10,10};
+        {1,2,3,4,5,6,7,8,9,10,11,12,13};
     
     private ArrayList<Card> cards; // Don't declare AL twice
     
@@ -104,7 +104,7 @@ public class Deck {
      * @param c1
      * @param c2
      */
-    public void swapCards(Card c1, Card c2) {
+    public static void swapCards(Card c1, Card c2) {
         Card temp = c1;
         c1 = c2;
         c2 = temp;
@@ -189,5 +189,48 @@ public class Deck {
     @Override
     public String toString() {
         return cards.toString();
+    }
+
+    /**
+     * InsertionSort with an ArrayList of Cards
+     * Usage might be sort the cards in your hand.
+     * 
+     * ArrayList causes some added code to deal with AL methods and 
+     * their return elements
+     * 
+     * @param deck A shuffled Deck of Cards
+     * @return InsertionSorted AL of Cards
+     */
+    public static ArrayList<Card> insertionSorted(Deck deck){
+        ArrayList<Card> sortedDeck = new ArrayList<Card>();
+        int j;
+        for(j=0; j < deck.getSize(); j++) {//copy deck to sortedDeck
+            sortedDeck.add(deck.getCards().get(j));
+        }
+        
+        int itemsSorted; /**number of sorted items */
+        int pointerPosit; /** current position where comparing 
+                            object to be inserted to objects already ordered */
+                                         
+        for (itemsSorted = 1; itemsSorted < sortedDeck.size(); itemsSorted++) {
+            
+            pointerPosit=itemsSorted-1;
+            int temp = sortedDeck.get(itemsSorted).getPointValue();
+            /**Sort Ascending
+             * to Sort Descending think you just reverse '>' to '<' in while loop*/
+            int whilePass = 0;
+            while(pointerPosit >= 0 && sortedDeck.get(pointerPosit).getPointValue() > temp ) {
+                //Move higher valued card to the right
+                sortedDeck.add(pointerPosit+1, sortedDeck.remove(pointerPosit));
+                pointerPosit--;//Look at next sorted card
+                whilePass++; //Because of how AL.add() and remove() work, track whilePasses
+            }                
+            //Only want to execute next line if part of Deck AL is already sorted 
+            if(whilePass == 0) {
+                sortedDeck.add(pointerPosit+1, 
+                        sortedDeck.remove(itemsSorted));
+            }
+        }
+        return sortedDeck;
     }
 }
