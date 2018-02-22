@@ -206,7 +206,7 @@ public class Deck {
         int j;
         for(j=0; j < deck.getSize(); j++) {//copy deck to sortedDeck
             sortedDeck.add(deck.getCards().get(j));
-        }
+        }// End copy.
         
         int itemsSorted; /**number of sorted items */
         int pointerPosit; /** current position where comparing 
@@ -224,7 +224,7 @@ public class Deck {
                 sortedDeck.add(pointerPosit+1, sortedDeck.remove(pointerPosit));
                 pointerPosit--;//Look at next sorted card
                 whilePass++; //Because of how AL.add() and remove() work, track whilePasses
-            }                
+            }// End while.                
             //Only want to execute next line if part of Deck AL is already sorted 
             if(whilePass == 0) {
                 sortedDeck.add(pointerPosit+1, 
@@ -232,5 +232,5 @@ public class Deck {
             }
         }
         return sortedDeck;
-    }
+    }//End insertionSort()
 }
