@@ -203,34 +203,31 @@ public class Deck {
      */
     public static ArrayList<Card> insertionSorted(Deck deck){
         ArrayList<Card> sortedDeck = new ArrayList<Card>();
-        int j;
-        for(j=0; j < deck.getSize(); j++) {//copy deck to sortedDeck
-            sortedDeck.add(deck.getCards().get(j));
-        }// End copy.
         
         int itemsSorted; /**number of sorted items */
         int pointerPosit; /** current position where comparing 
                             object to be inserted to objects already ordered */
                                          
-        for (itemsSorted = 1; itemsSorted < sortedDeck.size(); itemsSorted++) {
+        for (itemsSorted = 1; itemsSorted < deck.getCards().size(); itemsSorted++) {
             
             pointerPosit=itemsSorted-1;
-            int temp = sortedDeck.get(itemsSorted).getPointValue();
+            int temp = deck.getCards().get(itemsSorted).getPointValue();
             /**Sort Ascending
              * to Sort Descending think you just reverse '>' to '<' in while loop*/
             int whilePass = 0;
-            while(pointerPosit >= 0 && sortedDeck.get(pointerPosit).getPointValue() > temp ) {
+            while(pointerPosit >= 0 && deck.getCards().get(pointerPosit).getPointValue() > temp ) {
                 //Move higher valued card to the right
-                sortedDeck.add(pointerPosit+1, sortedDeck.remove(pointerPosit));
+                deck.getCards().add(pointerPosit+1, deck.getCards().remove(pointerPosit));
                 pointerPosit--;//Look at next sorted card
                 whilePass++; //Because of how AL.add() and remove() work, track whilePasses
             }// End while.                
             //Only want to execute next line if part of Deck AL is already sorted 
             if(whilePass == 0) {
-                sortedDeck.add(pointerPosit+1, 
-                        sortedDeck.remove(itemsSorted));
+                deck.getCards().add(pointerPosit+1, 
+                        deck.getCards().remove(itemsSorted));
             }
         }
+        sortedDeck=deck.getCards();
         return sortedDeck;
     }//End insertionSort()
 }
