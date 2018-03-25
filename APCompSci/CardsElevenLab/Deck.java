@@ -164,7 +164,7 @@ public class Deck {
     
     /**Efficient shuffle using same input deck to swap 
      * positions efficiently 'r' is random index location
-     * between 0 and k inclusively.
+     * between 0 and k (starts at size deck) inclusively.
      * @param cards - input Deck
      * @return Shuffled Deck cards
      */
