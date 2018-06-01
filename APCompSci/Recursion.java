@@ -12,7 +12,8 @@ public class Recursion {
     
     
     /**
-     * @param n An integer such that 0 < n < 16. n > 16 exceeds MAX_INTEGER
+     * @param n An integer such that 0 < n < 16. n > 16 exceeds 
+     * MAX_INTEGER
      * @return Factorial of n. (N!) 
      */
     public static int factorial(int n) {
@@ -43,8 +44,8 @@ public class Recursion {
     
     public static void main(String[] args) {
         DecimalFormat formatCommas = new DecimalFormat("#,###");
-        int factorial = factorial(16);
-        for (int i = 1; i < 47; i++) {
+        int factorial = factorial(10);
+        for (int i = 1; i < 30; i++) {
             int fibonacci = fibonacci(i);
             System.out.print(formatCommas.format(fibonacci) + " ");
         }
