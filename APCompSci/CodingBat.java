@@ -74,6 +74,10 @@ public class CodingBat {
                      //due to calling rebuild becuz i2>maxMatchPosit
                      //becuz you have no matches in strings.
                        if(passes==strings.length-1 && matches==0) {
+                        // end time
+                           long endTime = System.nanoTime();
+                           long duration = endTime - startTime;
+                           System.out.println("allSwap: " + duration + " nanoseconds(10^9)");
                            return strings;
                        }
                        map.clear();
@@ -116,7 +120,7 @@ public class CodingBat {
             // end time
                long endTime = System.nanoTime();
                long duration = endTime - startTime;
-               System.out.println("allSwap: " + duration);
+               System.out.println("allSwap: " + duration + " nanoseconds(10^9)");
                return strings;
              }
     
@@ -178,18 +182,44 @@ public class CodingBat {
      // end time
         long endTime = System.nanoTime();
         long duration = endTime - startTime;
-        System.out.println("firstSwap: " + duration);
+        System.out.println("firstSwap: " + duration + " nanoseconds(10^9)");
         return strings;
       }
     
+    /**Recursion: count the number of X's in string str;
+     * Hard One. Need to remember recursive call is: 
+     *             count '+='countX(str);
+     * Also, shortening str each round leads to: 
+     *        n=str.length()-1 == -1, so use 'end=Math.max(0,n)'.
+     * @param str
+     * @return 
+     */
+    public static int countX(String str) {
+        int count = 0, n=str.length()-1;
+        int end = Math.max(0,n);
+        
+        if(str.isEmpty()){ 
+            return 0;
+                       }else {
+        if(str.substring(end).equals("x"))  
+            count++;
+        
+        str = str.substring(0,end); 
+        count += countX(str);
+    }
+        return count;
+       }
+    
     public static void main(String[] args) {
-        String [] s1 = {"a", "b", "c", "xx", "yy", "zz"};
-        String [] s2 = {"ax", "bx", "cx", "ay", "cy", "aaa", "abb"};
+//        String [] s1 = {"a", "b", "c", "xx", "yy", "zz"};
+//        String [] s2 = {"ax", "bx", "cx", "ay", "cy", "aaa", "abb"};
+//        String [] s3 = {"ax", "bx", "ay", "by", "ai", "aj", "bx", "by"};
         CodingBat cb = new CodingBat();
-        String [] result = cb.firstSwap(s2);
-        System.out.println("Result=: " + Arrays.toString(result));
-        
-        
+//        String [] result = cb.firstSwap(s3);
+//        System.out.println("Result=: " + Arrays.toString(result));
+        String str1 = "xxHixx";
+        String str2 = "xhixhix";
+        System.out.println("'x'" + "count=: " +cb.countX(str2));
         
         
         
