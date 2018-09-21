@@ -210,6 +210,166 @@ public class CodingBat {
         return count;
        }
     
+    public static int countHi(String str) {
+        int count=0;
+        if(str.equals("")|| str.lastIndexOf("hi")<0){
+          return 0;
+        }else{
+          count++;
+          str=str.substring(0,str.lastIndexOf("hi"));
+          count+=countHi(str);
+        }
+        return count;
+      }
+
+    public int array11(int[] nums, int index) {
+        int count = 0;
+        if (nums.length == 0)
+            return 0;
+        if (index == nums.length - 1) {
+            if (nums[nums.length - 1] == 11) {
+                return count + 1;
+            } else {
+                return count;
+            }
+        }
+        if (nums[index] == 11) {
+            count++;
+        }
+        index = index + 1;
+        count += array11(nums, index);
+        return count;
+    }
+    
+    public String allStar(String str) {
+        String str2="";
+        String insert = "*";
+        if(str.length()==0 || str=="") return str;
+
+        if(str.length()==1){
+          str2 =str.substring(str.length()-1);
+          return str2;
+        }
+        str2=str.substring(0,1)+insert;
+        str = str.substring(1);
+        str2+=allStar(str);
+        return str2;
+      }
+    
+    /**Key to solution was:
+     * 1) return str at the base case;
+     * 2) have two helper strings: 1 for when and "x" was found,
+     *    and 1 for when a non-"x" was found; and
+     * 3) return the recursive call in the right order Non-"x"+
+     *    + endX(str) + str2 with "x's".
+     * @param str
+     * @return
+     */
+    public String endX(String str) {
+        String str2 = "";
+        String str3 ="";
+        if(str.equals(null) || str.equals("")) return str;
+        
+        if(str.length()==1 || str.indexOf("x")<0) {
+        if(str.equals("x")) str2="x";
+            return str;
+        }
+        
+        if(str.substring(0,1).equals("x")){
+        str2 = "x";
+        }else {
+            str3=str.substring(0, 1);
+        }
+        str=str.substring(1);
+        return str3+endX(str)+str2;
+      }
+    
+    /**We'll say that a "pair" in a string is two instances 
+     * of a char separated by a char. So "AxA" the A's make 
+     * a pair. Pair's can overlap, so "AxAxA" contains 3 pairs
+     *  -- 2 for A and 1 for x. Recursively compute the number
+     *   of pairs in the given string.
+
+     * countPairs("axa") → 1
+     * countPairs("axax") → 2
+     * countPairs("axbx") → 1
+     * @param str
+     * @return
+     */
+    public int countPairs(String str) {
+        String matchMe="";
+        int count = 0;
+        if(str.length()<2) return count;
+        if(str.length()==2){
+//          if(str.substring(1).equals(matchMe)) count++;
+          return count;
+        }
+        matchMe=str.substring(0,1);
+        str=str.substring(1);
+        if(matchMe.equals(str.substring(1,2))) count++;
+        count+=countPairs(str);
+        return count;
+      }
+    
+    public int count11(String str) {
+        int count=0;
+        String matchMe="11";
+        if(str.length()<2) return count;
+        if(str.length()==2){
+          if(str.equals(matchMe)){ 
+          count++;
+          return count;
+          }
+          return count;
+        }
+        if(str.substring(0,2).equals("11")){
+          count++;
+          str=str.substring(2);
+        }else{
+          str=str.substring(1);
+        }
+        count+=count11(str);
+        return count;
+      }
+    
+    /**Given a string, return recursively a "cleaned" string 
+     * where adjacent chars that are the same have been 
+     * reduced to a single char. So "yyzzza" yields "yza".
+
+     * stringClean("yyzzza") → "yza"
+     * stringClean("abbbcdd") → "abcd"
+     * stringClean("Hello") → "Helo"
+     * @param str:"yyzzza"
+     * @return str:"yza"
+     */
+    public String stringClean(String str) {
+        String str2 = "";
+        if(str.length()<2) return str;
+        if(str.length()==2){
+          if(str.substring(0,1).equals(str.substring(1))){
+              str2=str.substring(0,1);
+              return str2;
+        }
+          str2=str.substring(0);
+        return str2;
+        }
+        if(str.substring(0,1).equals(str.substring(1,2))){
+          if(str.indexOf(str.substring(1,2),2)<0 || 
+          str.indexOf(str.substring(1,2),2)>2){
+            str2=str.substring(0,1);
+            str=str.substring(2);
+          }else {
+          str2=str.substring(0,1);
+          str=str.substring(3);
+          }
+        }else {
+        str2=str.substring(0,1);
+        str=str.substring(1);
+        }
+        str2+=stringClean(str);
+        return str2;
+      }
+    
     public static void main(String[] args) {
 //        String [] s1 = {"a", "b", "c", "xx", "yy", "zz"};
 //        String [] s2 = {"ax", "bx", "cx", "ay", "cy", "aaa", "abb"};
@@ -217,11 +377,14 @@ public class CodingBat {
         CodingBat cb = new CodingBat();
 //        String [] result = cb.firstSwap(s3);
 //        System.out.println("Result=: " + Arrays.toString(result));
-        String str1 = "xxHixx";
-        String str2 = "xhixhix";
-        System.out.println("'x'" + "count=: " +cb.countX(str2));
-        
-        
+//        String str1 = "xxHixx";
+//        String str2 = "xhixhix";
+        String str3 = "Hello Bookkeeper";
+        String str4 = "abbbcdd";
+//        System.out.println("'hi'" + "count "+str3+ " =: " +cb.countHi(str3));
+//        int[] nums1 = {11, 2, 3, 4, 11, 5};
+//        int index=0;
+        System.out.println("stringClean(" +str3+ ") =: " +cb.stringClean(str3));
         
         
 
