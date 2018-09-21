@@ -370,6 +370,40 @@ public class CodingBat {
         return str2;
       }
     
+    /**count "hi" only if not preceeded by "x".
+     * @param str
+     * @return
+     */
+    public int countHi2(String str) {
+        int count=0;
+        String findMe1="hi";
+        String findMe2 ="xhi";
+        if(str.length()<2) return count;
+        if((str.indexOf(findMe2)>=0 && str.indexOf(findMe1)<0) || str.indexOf(findMe1)<0)
+        return count;
+        if(str.length()==3){
+          if(str.substring(0,1).equals("x") || str.indexOf(findMe1)<0){
+            return count;
+          }else if(str.indexOf(findMe1)>=0)
+            count++;
+            return count;
+        }
+        if(str.indexOf(findMe2)>=0 && str.indexOf(findMe1)>=0){
+          if(str.indexOf(findMe1)<str.indexOf(findMe2)){
+            count++;
+            str=str.substring(str.indexOf(findMe2)+3);
+          }else{
+            str=str.substring(str.indexOf(findMe2)+3);
+            }
+        }else
+        if(str.indexOf(findMe1)>=0){
+          count++;
+          str=str.substring(str.indexOf(findMe1)+2);
+        }
+        count+=countHi2(str);
+        return count;
+      }
+    
     public static void main(String[] args) {
 //        String [] s1 = {"a", "b", "c", "xx", "yy", "zz"};
 //        String [] s2 = {"ax", "bx", "cx", "ay", "cy", "aaa", "abb"};
@@ -379,12 +413,12 @@ public class CodingBat {
 //        System.out.println("Result=: " + Arrays.toString(result));
 //        String str1 = "xxHixx";
 //        String str2 = "xhixhix";
-        String str3 = "Hello Bookkeeper";
-        String str4 = "abbbcdd";
+        String str3 = "xxxx";
+        String str4 = "hixhhi";
 //        System.out.println("'hi'" + "count "+str3+ " =: " +cb.countHi(str3));
 //        int[] nums1 = {11, 2, 3, 4, 11, 5};
 //        int index=0;
-        System.out.println("stringClean(" +str3+ ") =: " +cb.stringClean(str3));
+        System.out.println("countHi2(" +str3+ ") =: " +cb.countHi2(str3));
         
         
 
