@@ -404,6 +404,56 @@ public class CodingBat {
         return count;
       }
     
+    /**Given a string, return true if it is a nesting of 
+     * zero or more pairs of parenthesis, 
+     * like "(())" or "((()))". 
+     * Suggestion: check the first and last chars, 
+     * and then recur on what's inside them.
+
+     * nestParen("(())") → true
+     * nestParen("((()))") → true
+     * nestParen("(((x))") → false
+     * @param str
+     * @return
+     */
+    public boolean nestParen(String str) {
+        if(str.equals("")) return true;
+        if(str.charAt(0)=='(' && str.charAt(str.length()-1)==')') 
+            return nestParen(str.substring(1,str.length()-1));
+        else
+            return false;
+        }
+    
+    public boolean strCopies(String str, String sub, int n) {
+        if(countSub(str,sub)==n) return true;
+        else
+            return false;
+    }
+        
+    /**Very interesting boolean String recursion problem.
+     * had to create a recusive method just to count the 
+     * occurrences of str, and then call it from the 
+     * strCopies(String str,String sub,int n) method to do
+     * the comparison of sub count vs n.
+     * @param str
+     * @param sub
+     * @return
+     */
+    private int countSub(String str,String sub) {
+        String findMe = sub;
+        int lengthFindMe = sub.length();
+        
+        if(str.length()<lengthFindMe) return 0;
+        if(str.substring(0,lengthFindMe).equals(findMe)){
+            str=str.substring(1);
+            return 1+countSub(str,sub);
+          }else{
+            str=str.substring(1);
+            return countSub(str,sub);
+          }
+      }
+        
+    
     public static void main(String[] args) {
 //        String [] s1 = {"a", "b", "c", "xx", "yy", "zz"};
 //        String [] s2 = {"ax", "bx", "cx", "ay", "cy", "aaa", "abb"};
@@ -413,12 +463,24 @@ public class CodingBat {
 //        System.out.println("Result=: " + Arrays.toString(result));
 //        String str1 = "xxHixx";
 //        String str2 = "xhixhix";
-        String str3 = "xxxx";
-        String str4 = "hixhhi";
+//        String str3 = "xxxx";
+//        String str4 = "hixhhi";
+//        String str5 = "((()))";
+//        String str6 = "(((x)))";
+        String str7 = "catcowcat";
+        String sub7 = "cat";
+        int n7 = 2;
+        String str8 = "catcowcat";
+        String sub8 ="cow";
+        int n8 = 1;
+        String str9= "iiijjj";
+        String sub9 = "ii";
+        int n9=2;
 //        System.out.println("'hi'" + "count "+str3+ " =: " +cb.countHi(str3));
 //        int[] nums1 = {11, 2, 3, 4, 11, 5};
 //        int index=0;
-        System.out.println("countHi2(" +str3+ ") =: " +cb.countHi2(str3));
+        System.out.println("strCopies(" +str9+","+sub9+","+ n9+ ") =: " 
+            +cb.strCopies(str9,sub9,n9));
         
         
 
