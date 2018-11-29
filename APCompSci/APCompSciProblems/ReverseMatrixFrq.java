@@ -1,16 +1,12 @@
 package APCompSciProblems;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class ReverseMatrixFrq {
   
-  @SuppressWarnings("unused")
   private static int[][] mat;
-  @SuppressWarnings("unused")
-  private int rows;
-  @SuppressWarnings("unused")
-  private int cols;
+  
+  public ReverseMatrixFrq(int rows,int cols) {
+    mat=generateMatrix(rows, cols);
+  }
   
   public int[][] generateMatrix(int rows, int cols)
   {
@@ -62,7 +58,7 @@ public class ReverseMatrixFrq {
     print2D(matReversed);
   }
 
-  private static void print2D(int[][] rmf)
+  public static void print2D(int[][] rmf)
   {
     for(int[] r:rmf)
     {
@@ -82,12 +78,11 @@ public class ReverseMatrixFrq {
 
   public static void main(String[] args)
   {
-    ReverseMatrixFrq rmf = new ReverseMatrixFrq();
-    mat=rmf.generateMatrix(3, 5);
+    ReverseMatrixFrq rmf = new ReverseMatrixFrq(3,5);
     rmf.matrixReversed(mat);
-    int[] row1 = {99,70,92,60,54};
-    System.out.println("Row1 "+Arrays.toString(row1)+" reversed is: \n"
-        + Arrays.toString(rmf.reverseRow(row1)));
+//    int[] row1 = {99,70,92,60,54};
+//    System.out.println("Row1 "+Arrays.toString(row1)+" reversed is: \n"
+//        + Arrays.toString(rmf.reverseRow(row1)));
 
     
   }
