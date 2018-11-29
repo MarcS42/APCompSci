@@ -34,10 +34,13 @@ public class ReverseMatrixFrq {
   
   public void rowReversed(int[][] mat)
   {
-    int j=0;
+    int j=0; // need j=0 outside of enhanced for-loop
     for(int[] r:mat)
     {
-      mat[j++]=reverseRow(r);
+    /**Imo having j++ within mat box may be only way 
+     * to get j incremented within enhanced for-loop
+     * */
+      mat[j++]=reverseRow(r); 
     }
     print2D(mat);
   }
