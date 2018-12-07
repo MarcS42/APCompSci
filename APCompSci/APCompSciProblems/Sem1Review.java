@@ -55,4 +55,31 @@ public class Sem1Review {
     }
     return nPhoneNumbers;
   }
+  
+  
+  public static int[][] replaceSquareRoots(int[][] roots)
+  {
+    int i=0, j=0;
+    int[][] rooted = new int[roots.length][roots[0].length];
+    for(int[] root:roots)
+    {
+      for(int r:root)
+      {
+        if(Math.sqrt(r) != (int)Math.sqrt(r))
+        {
+          rooted[i][j]=r;
+        }else 
+          if(Math.sqrt(r) == (int)Math.sqrt(r))
+        {
+          rooted[i][j]=-1;
+        }
+        j++;
+      }
+      j=0;
+      i++;
+    }
+    ReverseMatrixFrq.print2D(roots);
+    ReverseMatrixFrq.print2D(rooted);
+    return rooted;
+  }
 }
