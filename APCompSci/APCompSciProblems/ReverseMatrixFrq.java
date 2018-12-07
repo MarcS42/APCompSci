@@ -15,7 +15,7 @@ public class ReverseMatrixFrq {
     {
       for(int c=0; c<cols; c++)
       {
-        mat[r][c]=(int)(Math.random()*101+1);
+        mat[r][c]=(int)(Math.random()*1001+1);
       }
     }
     print2D(mat); 
