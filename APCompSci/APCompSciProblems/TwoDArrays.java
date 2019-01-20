@@ -30,25 +30,71 @@ public class TwoDArrays {
         }
         return myArrayIn;
     }
-
-    /**
-     * This print method does not really work as prints matrix as one column of all
-     * matrix elements
+    
+    /**Generates int 2DArray with a) unique values, and 
+     * b) using only elements from numbers 0 to rows*columns.
+     * Ex: arr2D is 3x4 implies elements from 0 to 11 will 
+     * be randomly placed in the arr2D.
      * 
-     * @param myArrayIn
+     * This makes it slower at the end as it tries to find last
+     * few unique values
+     * @param rows
+     * @param columns
+     * @return arr2D without duplicate int elements.
      */
-    public static void printMyArrayIn(int[][] myArrayIn) {
-        for (int row = 0; row < myArrayIn.length; row++) {
-            for (int column = 0; column < myArrayIn[0].length; column++) {
-                System.out.println(myArrayIn[row][column]);
-            }
+    public static int[][] twoDArrayUnique(int rows, int columns) {
+      int range = rows*columns, prospect;
+      int[][] myArrayIn = new int[rows][columns];
+      String elementsSoFar=" ";
+      for (int r = 0; r < myArrayIn.length; r++) {
+        for (int c = 0; c < myArrayIn[0].length; c++) {
+          prospect=(int) (Math.random() * range);
+          while(elementsSoFar.contains(" "+prospect + " "))
+          {
+            prospect=(int) (Math.random() * range);
+          }
+          myArrayIn[r][c] = prospect;
+          elementsSoFar+=" " + prospect + " ";
         }
-
+      }
+      return myArrayIn;
+    }
+    
+    /**Generates int 2DArray with a) unique values, and 
+     * b) using only elements from numbers 0 to rows*columns.
+     * Ex: arr2D is 3x4 implies elements from 0 to 11 will 
+     * be randomly placed in the arr2D.
+     * 
+     * This makes it slower at the end as it tries to find last
+     * few unique values
+     * @param rows
+     * @param columns
+     * @param range- An int >= rows*columns.
+     * @return arr2D without duplicate int elements.
+     */
+    public static int[][] twoDArrayUniqRng(int rows, int columns, int range) {
+      int prospect;
+      if(!(range>=rows*columns)) System.out.println("Invalid Range");
+      int[][] myArrayIn = new int[rows][columns];
+      String elementsSoFar=" ";
+      for (int r = 0; r < myArrayIn.length; r++) {
+        for (int c = 0; c < myArrayIn[0].length; c++) {
+          prospect=(int) (Math.random() * range);
+          while(elementsSoFar.contains(" "+prospect + " "))
+          {
+            prospect=(int) (Math.random() * range);
+          }
+          myArrayIn[r][c] = prospect;
+          elementsSoFar+=" " + prospect + " ";
+        }
+      }
+      return myArrayIn;
     }
 
     /**
-     * Takes 2d integer array in and prints it as a matrix should look Notice the
-     * while statement and placement of println().
+     * Takes 2d integer array in and prints it as a matrix should look 
+     * Notice the while statement and placement 
+     * of println().
      * 
      * @param myArrayIn
      */
@@ -57,7 +103,7 @@ public class TwoDArrays {
         int row = 0;
         while (row < myArrayIn.length) {
             for (int column = 0; column < myArrayIn[0].length; column++) {
-                System.out.print(myArrayIn[row][column] + "   ");
+                System.out.print(myArrayIn[row][column] + "  ");
             }
             System.out.println();
             row++;
@@ -181,10 +227,12 @@ public class TwoDArrays {
     }
 
     /**
-     * ArrayList element Double values always increasing. Appears that changing
-     * isIncreasing(ArrayList<Integer> arr) to isIncreasing(ArrayList<Double> arr)
-     * is not enough of a signature change to allow overloading of isIncreasing
-     * method.
+     * ArrayList element Double values always increasing.
+     *  
+     * Appears that changing isIncreasing(ArrayList<Integer> arr) 
+     * to isIncreasing(ArrayList<Double> arr)
+     * is not enough of a signature change to allow overloading 
+     * of isIncreasing method.
      */
     public static boolean isIncreasing2(ArrayList<Double> arr1) {
         int i = 0;
@@ -265,7 +313,6 @@ public class TwoDArrays {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         //
 //        int[] arr0 = { 34, 35, 36, 35, 38, 40, 42, 43, 51, 52 };
 //        ArrayList<Integer> arrIn = buildArrayList(arr0);
@@ -284,7 +331,9 @@ public class TwoDArrays {
         ArrayList<Double> stockPrices = buildArrayList(stockPricesIn);
         System.out.println("Stock Prices " + stockPrices);
         rateIsIncreasing(stockPrices);
-        
+        printMyArrayInV2(twoDArray(3, 4));
+        System.out.println();
+        printMyArrayInV2(twoDArrayUniqRng(3, 4, 100));
     }
 
 }

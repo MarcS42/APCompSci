@@ -27,7 +27,9 @@ public class TestSem1Review {
   public static void main(String[] args)
   {
     
+    @SuppressWarnings("unused")
     TestSem1Review ts1r = new TestSem1Review();
+    @SuppressWarnings("unused")
     String[] passwords =
       {"brownfox$",
        "thequ!c^k",
@@ -39,6 +41,7 @@ public class TestSem1Review {
        "pas*word",
        "pass*word"
       };
+    @SuppressWarnings("unused")
     String[] passwords1 = 
         {"ApCompSci116",
          "ApC@mpSci!16", 
@@ -46,12 +49,14 @@ public class TestSem1Review {
          "MCHS&tang$", "1mprove2018", 
          "lmpro^e18", "MCStangs","p@sword"
         };
+    @SuppressWarnings("unused")
     String[] phoneNumbers0=
       {"(310) 521-2703",
        "(562) 215-1692",
        "(213) 251-7181",
        "(310) 511-2043",
       };
+    @SuppressWarnings("unused")
     int[][] sumSqs1= {
         {2, 3, 5},
         {12, 8, 9},
@@ -63,8 +68,10 @@ public class TestSem1Review {
         {10, 12, 7, 11},
     };
     
+    @SuppressWarnings("unused")
     List<String> aList0 = Stream.of("foo","bar","bars", "futbol", "football")
         .collect(Collectors.toList());
+    @SuppressWarnings("unused")
     List<String> aList1 = Stream.of("the","quick","brown", "fow", 
         "jumped","over","lazy", "dog")
         .collect(Collectors.toList());

@@ -1,7 +1,5 @@
 package APCompSciProblems;
 
-import java.util.Arrays;
-
 public class ArraysReview {
 
   /**
@@ -128,10 +126,10 @@ public class ArraysReview {
   {
    int[][] scores= {{85,95,90}};
    int[] assignment={95};  
-   String[] names = {"Braskin, Aaron"}; 
-   String[] names2 = {"Abrahms, John","Braskin, Aaron","Brenan, Ken",
-       "Gaunt, Brandy","Sylvester, Jason"};
-    String name = "Abrahms, John", name2="Connor, David";
+//   String[] names = {"Braskin, Aaron"}; 
+//   String[] names2 = {"Abrahms, John","Braskin, Aaron","Brenan, Ken",
+//       "Gaunt, Brandy","Sylvester, Jason"};
+//    String name = "Abrahms, John", name2="Connor, David";
 
     ReverseMatrixFrq.print2D(addAssignment(scores, assignment));
 
