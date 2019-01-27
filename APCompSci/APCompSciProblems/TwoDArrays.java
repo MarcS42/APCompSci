@@ -31,7 +31,8 @@ public class TwoDArrays {
         return myArrayIn;
     }
     
-    /**Generates int 2DArray with a) unique values, and 
+    /**Generates int 2DArray with 
+     * a) unique values, and 
      * b) using only elements from numbers 0 to rows*columns.
      * Ex: arr2D is 3x4 implies elements from 0 to 11 will 
      * be randomly placed in the arr2D.
@@ -60,10 +61,11 @@ public class TwoDArrays {
       return myArrayIn;
     }
     
-    /**Generates int 2DArray with a) unique values, and 
-     * b) using only elements from numbers 0 to rows*columns.
-     * Ex: arr2D is 3x4 implies elements from 0 to 11 will 
-     * be randomly placed in the arr2D.
+    /**Generates int 2DArray with 
+     * a) unique values, and 
+     * b) using only random elements >= range.
+     * Ex: arr2D is 3x4 starting with random elements >= range(range>=3x4+1)  
+     * Qualified elements will be randomly placed in the arr2D.
      * 
      * This makes it slower at the end as it tries to find last
      * few unique values
@@ -116,10 +118,13 @@ public class TwoDArrays {
      * 
      * @param myArrayIn 2D String
      */
-    public static void printMyArrayInV2(String[][] myArrayIn) {
+    public static void printMyArrayInV2(String[][] myArrayIn) 
+    {
         int row = 0;
-        while (row < myArrayIn.length) {
-            for (int column = 0; column < myArrayIn[0].length; column++) {
+        while (row < myArrayIn.length) 
+        {
+            for (int column = 0; column < myArrayIn[0].length; column++) 
+            {
                 System.out.print(myArrayIn[row][column] + "  ");
             }
             System.out.println();
@@ -145,7 +150,8 @@ public class TwoDArrays {
     }
 
     /**
-     * This version is more efficient. Does not repeat the column for/next loop.
+     * This version is more efficient. Does not repeat the column 
+     * for/next loop.
      * 
      * @param arr 2D int array
      * @return modified 2D int array
