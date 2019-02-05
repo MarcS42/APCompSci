@@ -22,6 +22,20 @@ public class ReverseMatrixFrq {
     return mat;
   }
   
+  public int[][] generateMatrixRng(int rows, int cols, int low,int high)
+  {
+    int[][] mat = new int[rows][cols];
+    for(int r=0; r<rows; r++)
+    {
+      for(int c=0; c<cols; c++)
+      {
+        mat[r][c]=(int)(Math.random()*(high+1)+low);
+      }
+    }
+    print2D(mat); 
+    return mat;
+  }
+  
   public int[] reverseRow(int[] row)
   {
     int[] reversed = new int[row.length];
