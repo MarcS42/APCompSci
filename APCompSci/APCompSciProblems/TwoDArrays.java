@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author MarcSherman
  *
  */
-public class TwoDArrays {
+public class TwoDArrays<T> {
     /**
      * In lieu of a TwoDArray Constructor, had to use this 2dArray method because,
      * to use constructor and instantiate class members, would have had to create
@@ -37,18 +37,24 @@ public class TwoDArrays {
      * Ex: arr2D is 3x4 implies elements from 0 to 11 will 
      * be randomly placed in the arr2D.
      * 
+     * No sense making this generic as it will always be integers
+     * because using math random
+     * 
      * This makes it slower at the end as it tries to find last
      * few unique values
      * @param rows
      * @param columns
      * @return arr2D without duplicate int elements.
      */
-    public static int[][] twoDArrayUnique(int rows, int columns) {
+    public static int[][] twoDArrayUnique(int rows, int columns) 
+    {
       int range = rows*columns, prospect;
       int[][] myArrayIn = new int[rows][columns];
       String elementsSoFar=" ";
-      for (int r = 0; r < myArrayIn.length; r++) {
-        for (int c = 0; c < myArrayIn[0].length; c++) {
+      for (int r = 0; r < myArrayIn.length; r++) 
+      {
+        for (int c = 0; c < myArrayIn[0].length; c++) 
+        {
           prospect=(int) (Math.random() * range);
           while(elementsSoFar.contains(" "+prospect + " "))
           {
@@ -74,13 +80,17 @@ public class TwoDArrays {
      * @param range- An int >= rows*columns.
      * @return arr2D without duplicate int elements.
      */
-    public static int[][] twoDArrayUniqRng(int rows, int columns, int range) {
+    public static int[][] twoDArrayUniqRng(int rows, int columns, int range) 
+    {
       int prospect;
-      if(!(range>=rows*columns)) System.out.println("Invalid Range");
+      if(!(range>=rows*columns)) 
+        System.out.println("Invalid Range \n Range should be >= rows x columns");
       int[][] myArrayIn = new int[rows][columns];
       String elementsSoFar=" ";
-      for (int r = 0; r < myArrayIn.length; r++) {
-        for (int c = 0; c < myArrayIn[0].length; c++) {
+      for (int r = 0; r < myArrayIn.length; r++) 
+      {
+        for (int c = 0; c < myArrayIn[0].length; c++) 
+        {
           prospect=(int) (Math.random() * range);
           while(elementsSoFar.contains(" "+prospect + " "))
           {
@@ -101,10 +111,12 @@ public class TwoDArrays {
      * @param myArrayIn
      */
 
-    public static void printMyArrayInV2(int[][] myArrayIn) {
-        int row = 0;
-        while (row < myArrayIn.length) {
-            for (int column = 0; column < myArrayIn[0].length; column++) {
+    public void printMyArrayInV2(T[][] myArrayIn) {
+        Integer row = 0;
+        while (row < myArrayIn.length) 
+        {
+            for (int column = 0; column < myArrayIn[0].length; column++) 
+            {
                 System.out.print(myArrayIn[row][column] + "  ");
             }
             System.out.println();
@@ -132,16 +144,22 @@ public class TwoDArrays {
         }
     }
 
-    public static int[][] modify(int[][] arr) {
+    public static int[][] modify(int[][] arr) 
+    {
         int[][] modifArr = new int[arr.length][arr[0].length];
-        for (int i = 0; i < arr.length; i++) {
-            if (i % 2 == 0) {
-                for (int j = 0; j < arr[0].length; j++) {
-                    modifArr[i][j] = arr[i][j];
+        for (int i = 0; i < arr.length; i++) 
+        {
+            if (i % 2 == 0) //If even row
+            {
+                for (int j = 0; j < arr[0].length; j++) 
+                {
+                    modifArr[i][j] = arr[i][j];// No change
                 }
             } else {
-                for (int j = 0; j < arr[0].length; j++) {
-                    modifArr[i][j] = arr[i - 1][j];
+                for (int j = 0; j < arr[0].length; j++) 
+                {
+                    modifArr[i][j] = arr[i - 1][j];// Else modified array = element 
+                                                   //from previous row, same column
                 }
             }
 
@@ -154,7 +172,9 @@ public class TwoDArrays {
      * for/next loop.
      * 
      * @param arr 2D int array
-     * @return modified 2D int array
+     * @return modified 2D int array 
+     *   (odd row elements changed to = element precedent row, 
+     *   same col).
      */
 
     public static int[][] modifyV2(int[][] arr) {
@@ -178,27 +198,32 @@ public class TwoDArrays {
     public static int[] replaceHighAndLow(int[] arr) {
         int[] myHighLow = new int[arr.length];
         for (int i = 0; i < myHighLow.length; i++) {
-            if (arr[i] > 750) {
+            if (arr[i] > 750) 
+            {
                 myHighLow[i] = 1000;
             }
-            if ((arr[i] >= 250) && (arr[i] <= 750)) {
+            if ((arr[i] >= 250) && (arr[i] <= 750)) 
+            {
                 myHighLow[i] = arr[i];
             }
         }
         return myHighLow;
     }
 
-    public static void printArray(int[] arr) {
-        for (int value : arr) {
+    public void printArray(T[] arr) {
+        for (T value : arr) {
             System.out.print(value + "  ");
 
         }
         System.out.println();
     }
-
-    public static ArrayList<Integer> buildArrayList(int[] arr0) {
+    
+    /*convert int [] to ArrayList<Integer>*/
+    public static ArrayList<Integer> buildArrayList(int[] arr0) 
+    {
         ArrayList<Integer> arrIn = new ArrayList<Integer>();
-        for (int value : arr0) {
+        for (int value : arr0) 
+        {
             arrIn.add(value);
         }
         return arrIn;
@@ -210,9 +235,11 @@ public class TwoDArrays {
      * @param arr0
      * @return
      */
-    public static ArrayList<Double> buildArrayList(double[] arr0) {
+    public static ArrayList<Double> buildArrayList(double[] arr0) 
+    {
         ArrayList<Double> arrIn = new ArrayList<Double>();
-        for (double value : arr0) {
+        for (double value : arr0) 
+        {
             arrIn.add(value);
         }
         return arrIn;
@@ -221,10 +248,13 @@ public class TwoDArrays {
     /**
      * ArrayList element Integer values always increasing.
      */
-    public static boolean isIncreasing(ArrayList<Integer> arr0) {
+    public static boolean isIncreasing(ArrayList<Integer> arr0) 
+    {
         int i = 0;
-        while (i < arr0.size() - 1) {
-            if (arr0.get(i) > arr0.get(i + 1)) {
+        while (i < arr0.size() - 1) 
+        {
+            if (arr0.get(i) > arr0.get(i + 1)) 
+            {
                 return false;
             }
             i++;
@@ -240,10 +270,13 @@ public class TwoDArrays {
      * is not enough of a signature change to allow overloading 
      * of isIncreasing method.
      */
-    public static boolean isIncreasing2(ArrayList<Double> arr1) {
+    public static boolean isIncreasing2(ArrayList<Double> arr1) 
+    {
         int i = 0;
-        while (i < arr1.size() - 1) {
-            if (arr1.get(i) > arr1.get(i + 1)) {
+        while (i < arr1.size() - 1) 
+        {
+            if (arr1.get(i) > arr1.get(i + 1)) 
+            {
                 return false;
             }
             i++;
@@ -264,9 +297,12 @@ public class TwoDArrays {
                 "Love in This Club |", "Since U Been Gone |", "One More Time |",
                 "Walk This Way |" };
         int y = 0;
-        while (y < oneDArraySongsIn.length) {
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
+        while (y < oneDArraySongsIn.length) 
+        {
+            for (int i = 0; i < rows; i++) 
+            {
+                for (int j = 0; j < cols; j++) 
+                {
                     twoDArraySongsOut[i][j] = oneDArraySongsIn[y];
                     y++;
                 }
@@ -276,17 +312,20 @@ public class TwoDArrays {
     }
 
     /**
-     * count target String occurrences in 2D String Array Would be more robust if it
-     * handled "target", "Target", etc.
+     * count target String occurrences in 2D String Array 
+     * Would be more robust if it handled "target", "Target", etc.
      * 
      * @param 2DStringArray
      * @param target
      *            String to be counted
      */
-    public static int findCount(String[][] arr, String target) {
+    public static int findCount(String[][] arr, String target) 
+    {
         int count = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
+        for (int i = 0; i < arr.length; i++) 
+        {
+            for (int j = 0; j < arr[0].length; j++) 
+            {
                 if (arr[i][j].contains(target)) { // uses .contains(Charseq) of String method.
                     count++;
                 }
@@ -298,13 +337,16 @@ public class TwoDArrays {
     /**
      * 
      */
-    public static boolean rateIsIncreasing(ArrayList<Double> stockPrices) {
+    public static boolean rateIsIncreasing(ArrayList<Double> stockPrices) 
+    {
         ArrayList<Double> diff = new ArrayList<Double>();
-        if(stockPrices.get(0) > stockPrices.get(1)) {
+        if(stockPrices.get(0) > stockPrices.get(1)) 
+        {
             System.out.println("false"); 
             return false;
         }
-        for (int index = 0; index < stockPrices.size() - 1; index++) {
+        for (int index = 0; index < stockPrices.size() - 1; index++) 
+        {
             Double diff0 = Math.round((stockPrices.get(index + 1) 
                     - stockPrices.get(index))*100)/100.0; //Need to do weird
                      //rounding calc to avoid getting numbers 6-8 decimal places
@@ -337,9 +379,10 @@ public class TwoDArrays {
         ArrayList<Double> stockPrices = buildArrayList(stockPricesIn);
         System.out.println("Stock Prices " + stockPrices);
         rateIsIncreasing(stockPrices);
-        printMyArrayInV2(twoDArray(3, 4));
+//        TwoDArrays<Integer> genericInt= new TwoDArrays<>();
+//        genericInt.printMyArrayInV2(twoDArray(3, 4));
         System.out.println();
-        printMyArrayInV2(twoDArrayUniqRng(3, 4, 100));
+//        genericInt.printMyArrayInV2(twoDArrayUniqRng(3, 4, 100));
     }
 
 }

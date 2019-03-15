@@ -2,6 +2,11 @@ package APCompSciProblems;
 
 public class CodeQuest3PlusMinus {
   
+  /**
+   * @param strVals A String Array whose elements are numbers 
+   * @return Statement  whether numbers are ascending, descending,
+   * or random (up and down). 
+   */
   public String ascendingDescending(String[] strVals)
   {
     String plusMinus="";
