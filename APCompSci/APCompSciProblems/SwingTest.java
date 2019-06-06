@@ -5,9 +5,11 @@ import javax.swing.*;
 public class SwingTest {     
   public static void main(String[] args) {       
     // Create new frame        
-    JFrame frame= new JFrame();       
+    JFrame frame= new JFrame(); 
+    
     // Tells program to exit when user closes this frame         
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);         
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
     // Frame has 0 default size; give it a size         
     frame.setSize(500, 400); // setSize(int x, int y)
     
